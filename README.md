@@ -41,7 +41,7 @@ The special actions of this website in general are in the following section.
 
 [Privacy](https://www.mutaal-khan.github.io/xE/legals/index.html) - [Terms](https://www.mutaal-khan.github.io/xE/legals/index.html) 
 
-[![Privacy License](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/mutaal-khan/xE/LICENSE)
+[![Privacy License](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/mutaal-khan/xE/)
 
 -----
 <pre>
