@@ -54,18 +54,18 @@ The special actions of this website in general are in the following section.
    \|\/\"/\/|/              ----------------------------------------------------------------
      |  Y  |                       
      |  |  |                       
-     |  |  |                Home: https://mutaalkhan.github.io/xE/     
+     |  |  |                Home: https://mutaal-khan.github.io/xE/     
     _|  |  |                       
- __/ |  |  |\               Encryption: https://mutaalkhan.github.io/xE/pages/cipher.html
-/  \ |  |  |  \             Decryption: https://mutaalkhan.github.io/xE/pages/decipher.html
+ __/ |  |  |\               Encryption: https://mutaal-khan.github.io/xE/pages/cipher.html
+/  \ |  |  |  \             Decryption: https://mutaal-khan.github.io/xE/pages/decipher.html
    __|  |  |   |                   
-/\/  |  |  |   |\           Tutorial: https://mutaalkhan.github.io/xE/pages/tutorial.html
+/\/  |  |  |   |\           Tutorial: https://mutaal-khan.github.io/xE/pages/tutorial.html
  <   +\ |  |\ />  \                   
-  >   + \  | LJ    |        Information: https://mutaalkhan.github.io/xE/pages/Information.html
-        + \|+  \  < \       About: https://mutaalkhan.github.io/xE/pages/about.html
+  >   + \  | LJ    |        Information: https://mutaal-khan.github.io/xE/pages/Information.html
+        + \|+  \  < \       About: https://mutaal-khan.github.io/xE/pages/about.html
   (O)      +    |    )             
-   |             \  /\      Terms and Conditions: https://mutaalkhan.github.io/xE/pages/legals.html
- ( | )   (o)      \/  )     Privacy Policy: https://mutaalkhan.github.io/xE/pages/legals.html
+   |             \  /\      Terms and Conditions: https://mutaal-khan.github.io/xE/pages/legals.html
+ ( | )   (o)      \/  )     Privacy Policy: https://mutaal-khan.github.io/xE/pages/legals.html
 _\\|//__( | )______)_/      
         \\|//               (c) ALL RIGHTS RESERVED
 </pre>
