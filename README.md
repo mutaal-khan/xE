@@ -44,7 +44,7 @@ The special actions of this website in general are in the following section.
 [![Privacy License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
 
 -----
-<code>
+<pre>
         _
        (_)                              
        |=|                  ----------------------------------------------------------------
@@ -68,4 +68,4 @@ The special actions of this website in general are in the following section.
  ( | )   (o)      \/  )     Privacy Policy: https://mutaalkhan.github.io/xE/pages/legals.html
 _\\|//__( | )______)_/      
         \\|//               (c) ALL RIGHTS RESERVED
-</code>
+</pre>
