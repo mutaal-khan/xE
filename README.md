@@ -39,7 +39,7 @@ The special actions of this website in general are in the following section.
 
 ## Legals
 
-[Privacy](https://www.mutaal-khan.github.io/xE/legals/index.html) - [Terms](https://www.mutaal-khan.github.io/xE/legals/index.html) 
+[Privacy](https://www.mutaal-khan.github.io/xE/pages/legals.html) - [Terms](https://www.mutaal-khan.github.io/xE/pages/legals.html) 
 
 [![Privacy License](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/mutaal-khan/xE/)
 
@@ -56,8 +56,8 @@ The special actions of this website in general are in the following section.
      |  |  |                       
      |  |  |                Home: https://mutaal-khan.github.io/xE/     
     _|  |  |                       
- __/ |  |  |\               Encryption: https://mutaal-khan.github.io/xE/pages/cipher.html
-/  \ |  |  |  \             Decryption: https://mutaal-khan.github.io/xE/pages/decipher.html
+ __/ |  |  |\               Encryption: https://mutaal-khan.github.io/xE/index.html
+/  \ |  |  |  \             Decryption: https://mutaal-khan.github.io/xE/index.html
    __|  |  |   |                   
 /\/  |  |  |   |\           Tutorial: https://mutaal-khan.github.io/xE/pages/tutorial.html
  <   +\ |  |\ />  \                   
