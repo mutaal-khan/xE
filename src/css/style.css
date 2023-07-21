@@ -10,7 +10,7 @@
 
     [KHAN] | THE BELIEVERS ARE SUCCESSFUL
 */
-@font-face {font-family: matrix; src: url('fonts/matrix.ttf');}
+@font-face {font-family: matrix; src: url('fonts/matrix.ttf');format(“truetype”)}
 @font-face {font-family: pixelOperator; src: url('fonts/pixelOperator.ttf');}
 @font-face {font-family: rainyhearts; src: url('fonts/rainyhearts.ttf');}
 @font-face {font-family: quicksand; src: url('fonts/quicksand.ttf');}
