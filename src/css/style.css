@@ -10,12 +10,14 @@
 
     [KHAN] | THE BELIEVERS ARE SUCCESSFUL
 */
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
 @font-face {font-family: matrix; src: url('fonts/matrix.ttf');format(“truetype”)}
 @font-face {font-family: pixelOperator; src: url('fonts/pixelOperator.ttf');}
 @font-face {font-family: rainyhearts; src: url('fonts/rainyhearts.ttf');}
 @font-face {font-family: quicksand; src: url('fonts/quicksand.ttf');}
 
-body {font-family: quicksand; letter-spacing: 1px;}
+body {font-family: 'Quicksand', sans-serif; letter-spacing: 1px;}
 
 .font-mx {font-family: matrix !important;}
 .font-po {font-family: pixelOperator !important; letter-spacing: 1px !important;}
