@@ -1,0 +1,53 @@
+/* 
+    proudly done by @mutaalkhan
+    github.com/mutaal-khan/xE
+
+    Releases version 1.0.0
+
+    - 04:15 PM - Friday, 21 July, 2023 - Panjshir, Afghanistan
+
+    (C) All rights reserved
+
+    [KHAN] | THE BELIEVERS ARE SUCCESSFUL
+*/
+@font-face {font-family: matrix; src: url('./fonts/matrix.ttf');}
+@font-face {font-family: pixelOperator; src: url('./fonts/pixelOperator.ttf');}
+@font-face {font-family: rainyhearts; src: url('./fonts/rainyhearts.ttf');}
+@font-face {font-family: quicksand; src: url('./fonts/quicksand.ttf');}
+
+body {font-family: quicksand; letter-spacing: 1px;}
+
+.font-mx {font-family: matrix !important;}
+.font-po {font-family: pixelOperator !important; letter-spacing: 1px !important;}
+.font-rh {font-family: rainyhearts !important;}
+.font-qs {font-family: quicksand !important;}
+
+/* width */
+.textarea-scrollbar::-webkit-scrollbar {
+    width: 8px;
+}
+@media not all and (min-width: 640px) { 
+    .textarea-scrollbar::-webkit-scrollbar {
+        width: 5px;
+    }
+}
+  
+/* Track */
+.textarea-scrollbar::-webkit-scrollbar-track {
+    background: none;
+    /* background: #1f2937; */
+    border-radius: 2px;
+    cursor: pointer !important;
+}
+  
+/* Handle */
+.textarea-scrollbar::-webkit-scrollbar-thumb {
+    background: #374151;
+    border-radius: 2px;
+    cursor: pointer !important;
+}
+
+/* Handle on hover */
+.textarea-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #4b5563;
+}

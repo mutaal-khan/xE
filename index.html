@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>xE Matrix Encryption</title>
+    <link rel="stylesheet" href="./src/css/xTailwind.css">
+    <link rel="stylesheet" href="./src/css/style.css">
+</head>
+<body class="bg-gray-900 text-gray-300 tracking-wide">
+    <!-- 
+        >> -------------------------------------------------------------------------------------------------------------------------------- <<
+        >  |    Navigation                                                                                                         v1.0.0
+        >> -------------------------------------------------------------------------------------------------------------------------------- <<
+    -->
+    <nav class="h-12 w-full z-10 sticky top-0 backdrop-filter backdrop-blur-xl border-b border-gray-800 shadow-md flex justify-start items-center flex-col flex-no-wrap">
+        <div class="container h-full px-10 flex justify-between items-center">
+            <h1 class="text-xl text-green-400 font-mx">Matrix</h1>
+        </div>
+    </nav>
+    <!-- 
+        >> -------------------------------------------------------------------------------------------------------------------------------- <<
+        >  |    Banner                                                                                                         v1.0.0
+        >> -------------------------------------------------------------------------------------------------------------------------------- <<
+    -->
+    <!-- <div class="h-max mt-6 px-5 w-full flex justify-start items-center flex-col flex-no-wrap">
+        <div class="container max-w-4xl rounded-lg border-2 border-blue-800 h-full px-5 flex flex-col">
+            <div class="mt-3 flex justify-start items-center gap-1">
+                <div class="text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded-md bg-blue-900 text-blue-300 mb-2">
+                    <svg class="w-3 h-3 mr-1" fill="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M13.839 17.525c-.006.002-.559.186-1.039.186c-.265 0-.372-.055-.406-.079c-.168-.117-.48-.336.054-1.4l1-1.994c.593-1.184.681-2.329.245-3.225c-.356-.733-1.039-1.236-1.92-1.416a4.776 4.776 0 0 0-.958-.097c-1.849 0-3.094 1.08-3.146 1.126a.5.5 0 0 0 .493.848c.005-.002.559-.187 1.039-.187c.263 0 .369.055.402.078c.169.118.482.34-.051 1.402l-1 1.995c-.594 1.185-.681 2.33-.245 3.225c.356.733 1.038 1.236 1.921 1.416c.314.063.636.097.954.097c1.85 0 3.096-1.08 3.148-1.126a.5.5 0 0 0-.491-.849z"/><circle cx="13" cy="6.001" r="2.5" fill="currentColor"/></svg>
+                    Tutorial
+                </div>
+            </div>
+            <h1 class="text-normal text-green-400">How to use xE?</h1>
+            <p class="mb-3 text-sm">Please visite the
+                 <a href="#" class="text-blue-400 hover:underline" >Documentation</a>
+                  and learn how to use xE.</p>
+        </div>
+    </div> -->
+
+    <!-- 
+        >> -------------------------------------------------------------------------------------------------------------------------------- <<
+        >  |    xE - Run                                                                                                      v1.0.0
+        >> -------------------------------------------------------------------------------------------------------------------------------- <<
+    -->
+     <div class="w-full flex justify-center items-start px-5">
+        <div class="container mt-4 flex flex-col justify-start items-center flex-no-wrap">
+            <!-- 
+                >> -------------------------------------------------------------------------------------------------------------------------------- <<
+                >  |    Consoles                                                                                                             v1.0.0
+                >> -------------------------------------------------------------------------------------------------------------------------------- <<
+            -->
+            <!-- Tabs Component -->
+            <div class="container max-w-4xl overflow-hidden">
+                <!-- Tabs -->
+                <div class="my-2 border-b-2 pl-0.5 border-gray-800 flex items-center gap-2">
+                    <button class="-m-0.5 px-8 py-2.5 rounded-t-md text-sm text-gray-400 hover:bg-gray-800 hover:text-gray-300 border-b-2 border-gray-800 hover:border-gray-300 flex items-center outline-none" data-tabs data-tab-target="#data-tab">
+                        Data
+                        <svg class="h-4 w-4 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 32 32"><path fill="currentColor" d="M29 22h-5a2.003 2.003 0 0 1-2-2v-6a2.002 2.002 0 0 1 2-2h5v2h-5v6h5zM18 12h-4V8h-2v14h6a2.003 2.003 0 0 0 2-2v-6a2.002 2.002 0 0 0-2-2zm-4 8v-6h4v6zm-6-8H3v2h5v2H4a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h6v-8a2.002 2.002 0 0 0-2-2zm0 8H4v-2h4z"/></svg>
+                    </button>
+                    <button class="-m-0.5 px-8 py-2.5 rounded-t-md text-sm text-gray-400 hover:bg-gray-800 hover:text-gray-300 border-b-2 border-gray-800 hover:border-gray-300 flex items-center outline-none" data-tabs data-tab-target="#transform-tab">
+                        Transform
+                        <svg class="h-4 w-4 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 32 32"><path fill="currentColor" d="M29 21.278V19a4 4 0 0 0-8 0v2.278A1.994 1.994 0 0 0 20 23v5a2.002 2.002 0 0 0 2 2h6a2.002 2.002 0 0 0 2-2v-5a1.994 1.994 0 0 0-1-1.722zM25 17a2.002 2.002 0 0 1 2 2v2h-4v-2a2.002 2.002 0 0 1 2-2zm-3 11v-5h6v5zM2 2h2v4H2zm12 0h2v4h-2zm4 0h2v4h-2zM2 8h2v8H2zm0 10h2v8H2zm12 0h2v8h-2zM6 8h2v8H6zm12 0h2v6h-2zm-8 18H8a2.002 2.002 0 0 1-2-2v-4a2.002 2.002 0 0 1 2-2h2a2.002 2.002 0 0 1 2 2v4a2.002 2.002 0 0 1-2 2zm-2-6v4h2v-4zm6-4h-2a2.002 2.002 0 0 1-2-2v-4a2.002 2.002 0 0 1 2-2h2a2.002 2.002 0 0 1 2 2v4a2.002 2.002 0 0 1-2 2zm-2-6v4h2v-4zm-2-4H8a2.002 2.002 0 0 1-2-2V2h2v2h2V2h2v2a2.002 2.002 0 0 1-2 2z"/></svg>
+                    </button>
+                </div>
+                <!-- Tabs Content -->
+                <div class="container relative overflow-hidden">
+                    <div class="hidden" id="data-tab" data-tab-contents>
+                        <!-- <p class="mt-2 ml-2 text-sm text-gray-400">Enter text data for encryption or encrypted data for decryption.</p> -->
+                        <form data-validate-form class="w-full mt-2">
+                            <div class="w-full border-2 rounded-lg bg-gray-900 border-gray-800">
+                                <!-- Tool Bar -->
+                                <div class="h-12 px-2 border-b-2 border-gray-800 rounded-t-md flex items-center justify-between">
+                                    <div class="flex items-center gap-2">
+                                        <button data-tooltip-target="tooltip-clear" id="clear-console" type="button" class="p-1.5 rounded-md text-gray-400 hover:text-gray-200 hover:bg-gray-800" data-ripple-light="true">
+                                            <svg class="h-6 w-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M3.464 3.464C2 4.93 2 7.286 2 12c0 4.714 0 7.071 1.464 8.535C4.93 22 7.286 22 12 22c4.714 0 7.071 0 8.535-1.465C22 19.072 22 16.714 22 12s0-7.071-1.465-8.536C19.072 2 16.714 2 12 2S4.929 2 3.464 3.464Zm5.524 6.825l4.723 4.723l2.619-2.618c1.113-1.114 1.67-1.67 1.67-2.362c0-.692-.557-1.249-1.67-2.362S14.66 6 13.968 6c-.692 0-1.248.557-2.362 1.67l-2.618 2.619Zm3.406 6.041l.257-.257l-4.724-4.724l-.257.257C6.557 12.72 6 13.276 6 13.968c0 .692.557 1.249 1.67 2.362S9.34 18 10.032 18c.692 0 1.248-.557 2.362-1.67Z" clip-rule="evenodd"/></svg>
+                                        </button>
+                                        <button data-tooltip-target="tooltip-copy-data" id="copy-data-console" type="button" class="p-1.5 rounded-md text-gray-400 hover:text-gray-200 hover:bg-gray-800" data-ripple-light="true">
+                                            <svg class="h-6 w-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M13 6.75V2H8.75A2.25 2.25 0 0 0 6.5 4.25v13a2.25 2.25 0 0 0 2.25 2.25h9A2.25 2.25 0 0 0 20 17.25V9h-4.75A2.25 2.25 0 0 1 13 6.75Zm1.5 0V2.5l5 5h-4.25a.75.75 0 0 1-.75-.75ZM5.503 4.627A2.251 2.251 0 0 0 4 6.75v10.504a4.75 4.75 0 0 0 4.75 4.75h6.494a2.25 2.25 0 0 0 2.122-1.5H8.75a3.25 3.25 0 0 1-3.25-3.25l.003-12.627Z"/></svg>
+                                        </button>
+                                        <button data-tooltip-target="tooltip-past" id="past-to-console" type="button" class="p-1.5 rounded-md text-gray-400 hover:text-gray-200 hover:bg-gray-800" data-ripple-light="true">
+                                            <svg class="h-6 w-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M21.83 4h1.67A3.5 3.5 0 0 1 27 7.5v19a3.5 3.5 0 0 1-3.5 3.5h-15A3.5 3.5 0 0 1 5 26.5v-19A3.5 3.5 0 0 1 8.5 4h1.67A3.001 3.001 0 0 1 13 2h6c1.306 0 2.418.835 2.83 2ZM19 4h-6a1 1 0 1 0 0 2h6a1 1 0 1 0 0-2Zm-8 8a1 1 0 1 0 0 2h10a1 1 0 1 0 0-2H11Zm-1 6a1 1 0 0 0 1 1h5a1 1 0 1 0 0-2h-5a1 1 0 0 0-1 1Zm1 4a1 1 0 1 0 0 2h8a1 1 0 1 0 0-2h-8Z"/></svg>
+                                        </button>
+                                        <button data-tooltip-target="tooltip-remove-breaks" id="remove-breaks" type="button" class="p-1.5 rounded-md text-gray-400 hover:text-gray-200 hover:bg-gray-800" data-ripple-light="true">
+                                            <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"><path d="M4 42L8.94118 30M32 42L27.0588 30M27.0588 30L25 25L18 8L11 25L8.94118 30M27.0588 30H8.94118"/><path d="M28 10L44 10"/><path d="M32 20L44 20"/><path d="M36 30L44 30"/><path d="M40 40H44"/></g></svg>
+                                            <!-- <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g transform="translate(0 24) scale(1 -1)"><path fill="currentColor" d="M4 17h6v2H4zm13-6H4v2h13.25c1.1 0 2 .9 2 2s-.9 2-2 2H15v-2l-3 3l3 3v-2h2c2.21 0 4-1.79 4-4s-1.79-4-4-4zM4 5h16v2H4z"/></g></svg> -->
+                                        </button>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <button data-tooltip-target="tooltip-new" type="button" class="p-1.5 rounded-md text-gray-400 hover:text-gray-200 hover:bg-gray-800" data-ripple-light="true">
+                                            <svg class="h-5 w-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 64 64"><path fill="currentColor" d="M52 2H12C6.477 2 2 6.477 2 12v40c0 5.523 4.477 10 10 10h40c5.523 0 10-4.477 10-10V12c0-5.523-4.477-10-10-10zM21 39h-2.553l-5.084-9.131V39H11V25h2.477l5.16 9.348V25H21v14zm14 0H25V25h9.75v2.367h-7.096v3.104h6.6v2.359h-6.6v3.808H35V39zm16.668 0H48.73l-2.729-10.467L43.279 39h-3.004L37 25h2.836l2.068 9.615L44.41 25h3.293l2.404 9.779L52.213 25H55l-3.332 14z"/></svg>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="px-4 pr-2 py-4">
+                                    <label for="data-textarea" class="sr-only">Data Input</label>
+                                    <textarea data-rules="number" id="data-textarea" rows="8" class="textarea-scrollbar resize-none overflow-x-hidden block w-full px-0 text-sm border-0 outline-none focus:ring-0 text-gray-200 bg-gray-900 placeholder-gray-400" placeholder="Insert Text Data / Encrypted Data here..." required></textarea>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="hidden" id="transform-tab" data-tab-contents>
+                        <!-- <p class="mt-2 ml-2 text-sm text-gray-400">The Encrypted or decrypted data. Can be downloaded as PDF and ZIP.</p> -->
+                        <form class="w-full mt-2">
+                            <div class="w-full border-2 rounded-lg bg-gray-800 border-gray-800">
+                                <!-- Tool Bar -->
+                                <div class="h-12 px-2 border-b-2 border-gray-900 rounded-t-md flex items-center justify-between">
+                                    <div class="flex items-center gap-2">
+                                        <button data-tooltip-target="tooltip-copy-transform" id="copy-transform-console" type="button" class="p-1.5 rounded-md text-gray-400 hover:text-gray-100 hover:bg-gray-700" data-ripple-light="true">
+                                            <svg class="h-6 w-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M13 6.75V2H8.75A2.25 2.25 0 0 0 6.5 4.25v13a2.25 2.25 0 0 0 2.25 2.25h9A2.25 2.25 0 0 0 20 17.25V9h-4.75A2.25 2.25 0 0 1 13 6.75Zm1.5 0V2.5l5 5h-4.25a.75.75 0 0 1-.75-.75ZM5.503 4.627A2.251 2.251 0 0 0 4 6.75v10.504a4.75 4.75 0 0 0 4.75 4.75h6.494a2.25 2.25 0 0 0 2.122-1.5H8.75a3.25 3.25 0 0 1-3.25-3.25l.003-12.627Z"/></svg>
+                                        </button>
+                                        <button data-tooltip-target="tooltip-transfer-data" id="transfer-data" type="button" class="p-1.5 rounded-md text-gray-400 hover:text-gray-100 hover:bg-gray-700" data-ripple-light="true">
+                                            <svg class="h-6 w-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M2 12c0-4.714 0-7.071 1.464-8.536C4.93 2 7.286 2 12 2c4.714 0 7.071 0 8.535 1.464C22 4.93 22 7.286 22 12c0 4.714 0 7.071-1.465 8.535C19.072 22 16.714 22 12 22s-7.071 0-8.536-1.465C2 19.072 2 16.714 2 12Zm15 1.25a.75.75 0 0 1 .493 1.315l-3.437 3a.75.75 0 0 1-.987-1.13L15 14.75H7a.75.75 0 0 1 0-1.5h10Zm-5.997-6.743a.75.75 0 0 1-.072 1.058L9 9.25h8a.75.75 0 0 1 0 1.5H7a.75.75 0 0 1-.493-1.315l3.437-3a.75.75 0 0 1 1.059.072Z" clip-rule="evenodd"/></svg>
+                                        </button>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <button data-tooltip-target="tooltip-download" type="button" class="p-1.5 rounded-md text-gray-400 hover:text-gray-100 hover:bg-gray-700" data-ripple-light="true">
+                                            <svg class="h-6 w-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M2 12c0-4.714 0-7.071 1.464-8.536C4.93 2 7.286 2 12 2c4.714 0 7.071 0 8.535 1.464C22 4.93 22 7.286 22 12c0 4.714 0 7.071-1.465 8.535C19.072 22 16.714 22 12 22s-7.071 0-8.536-1.465C2 19.072 2 16.714 2 12Zm10-5.75a.75.75 0 0 1 .75.75v5.19l1.72-1.72a.75.75 0 1 1 1.06 1.06l-3 3a.75.75 0 0 1-1.06 0l-3-3a.75.75 0 1 1 1.06-1.06l1.72 1.72V7a.75.75 0 0 1 .75-.75Zm-4 10a.75.75 0 0 0 0 1.5h8a.75.75 0 0 0 0-1.5H8Z" clip-rule="evenodd"/></svg>
+                                        </button>
+                                        <button data-tooltip-target="tooltip-new" type="button" class="p-1.5 rounded-md text-gray-400 hover:text-gray-100 hover:bg-gray-700" data-ripple-light="true">
+                                            <svg class="h-5 w-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 64 64"><path fill="currentColor" d="M52 2H12C6.477 2 2 6.477 2 12v40c0 5.523 4.477 10 10 10h40c5.523 0 10-4.477 10-10V12c0-5.523-4.477-10-10-10zM21 39h-2.553l-5.084-9.131V39H11V25h2.477l5.16 9.348V25H21v14zm14 0H25V25h9.75v2.367h-7.096v3.104h6.6v2.359h-6.6v3.808H35V39zm16.668 0H48.73l-2.729-10.467L43.279 39h-3.004L37 25h2.836l2.068 9.615L44.41 25h3.293l2.404 9.779L52.213 25H55l-3.332 14z"/></svg>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="px-4 pr-2 py-4">
+                                    <label for="transform-textarea" class="sr-only">Transformed Data</label>
+                                    <textarea data-transform-console id="transform-textarea" rows="8" class="textarea-scrollbar resize-none overflow-x-hidden block w-full px-0 text-sm border-0 outline-none focus:ring-0 text-gray-200 bg-gray-800 placeholder-gray-400" placeholder="Encrypted / Decrypted data ouptut." value="" required></textarea>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tool Tips -->
+            <div>
+                <div id="tooltip-clear" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-xs font-medium text-white bg-gray-600 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                    Clear consoles
+                    <div class="tooltip-arrow" data-popper-arrow></div>
+                </div>
+                <div id="tooltip-copy-data" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-xs font-medium text-white bg-gray-600 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                    Copy console
+                    <div class="tooltip-arrow" data-popper-arrow></div>
+                </div>
+                <div id="tooltip-past" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-xs font-medium text-white bg-gray-600 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                    Past to Console
+                    <div class="tooltip-arrow" data-popper-arrow></div>
+                </div>
+                <div id="tooltip-remove-breaks" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-xs font-medium text-white bg-gray-600 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                    Remove line breaks
+                    <div class="tooltip-arrow" data-popper-arrow></div>
+                </div>
+                <div id="tooltip-new" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-xs font-medium text-white bg-gray-600 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                    New data
+                    <div class="tooltip-arrow" data-popper-arrow></div>
+                </div>
+                <div id="tooltip-copy-transform" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-xs font-medium text-white bg-gray-600 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                    Copy console
+                    <div class="tooltip-arrow" data-popper-arrow></div>
+                </div>
+                <div id="tooltip-transfer-data" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-xs font-medium text-white bg-gray-600 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                    Transfer to Data console
+                    <div class="tooltip-arrow" data-popper-arrow></div>
+                </div>
+                <div id="tooltip-download" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-xs font-medium text-white bg-gray-600 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                    Download
+                    <div class="tooltip-arrow" data-popper-arrow></div>
+                </div>
+            </div>
+
+
+            <div class="container max-w-4xl mt-2">
+                <!--<<< Password -->
+                <div class="mt-4 w-full h-max flex flex-col justify-start items-start md:flex-row md:justify-between md:items-center">   
+                    <label for="encryption-key" class="text-sm block"><nobr>Encryption Key *</nobr></label>
+                    <div class="w-full flex items-center mt-3 md:mt-0">
+                        <div class="relative w-full md:ml-4">
+                            <div class="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none">
+                                <svg class="w-4 h-4 text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M17 9V7c0-2.8-2.2-5-5-5S7 4.2 7 7v2c-1.7 0-3 1.3-3 3v7c0 1.7 1.3 3 3 3h10c1.7 0 3-1.3 3-3v-7c0-1.7-1.3-3-3-3zM9 7c0-1.7 1.3-3 3-3s3 1.3 3 3v2H9V7z"/></svg>
+                            </div>
+                            <input type="password" id="encryption-key" class="bg-gray-900 block w-full px-10 py-2 border-2 border-gray-800 text-gray-300 text-sm rounded-lg outline-none" placeholder="Password" value="" required>
+                            <button data-show-encryption-key type="button" class="absolute inset-y-0 right-0 flex items-center pr-3 outline-none">
+                                <svg class="w-4 h-4 text-gray-400 hover:text-gray-200" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 20 20"><g fill="currentColor"><path fill-rule="evenodd" d="M3.707 2.293a1 1 0 0 0-1.414 1.414l14 14a1 1 0 0 0 1.414-1.414l-1.473-1.473A10.014 10.014 0 0 0 19.542 10C18.268 5.943 14.478 3 10 3a9.958 9.958 0 0 0-4.512 1.074l-1.78-1.781Zm4.261 4.26l1.514 1.515a2.003 2.003 0 0 1 2.45 2.45l1.514 1.514a4 4 0 0 0-5.478-5.478Z" clip-rule="evenodd"/><path d="M12.454 16.697L9.75 13.992a4 4 0 0 1-3.742-3.741L2.335 6.578A9.98 9.98 0 0 0 .458 10c1.274 4.057 5.065 7 9.542 7c.847 0 1.669-.105 2.454-.303Z"/></g></svg>
+                                <svg class="hidden w-4 h-4 text-gray-400 hover:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g id="feEye0" fill="none" fill-rule="evenodd" stroke="none" stroke-width="1"><g id="feEye1" fill="currentColor"><path id="feEye2" d="M2 12c.945-4.564 5.063-8 10-8s9.055 3.436 10 8c-.945 4.564-5.063 8-10 8s-9.055-3.436-10-8Zm10 5a5 5 0 1 0 0-10a5 5 0 0 0 0 10Zm0-2a3 3 0 1 0 0-6a3 3 0 0 0 0 6Z"/></g></g></svg>
+                            </button>
+                        </div>
+
+                        <button type="button" id="add-encryption-key" class="inline-flex w-32 items-center justify-center py-2 px-4 ml-2 text-sm text-green-500 hover:text-green-400 rounded-lg border-2 border-gray-800 hover:bg-gray-700 outline-none" data-ripple-dark="true">
+                            Add
+                            <svg class="w-4 h-4 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 16 16"><path fill="currentColor" d="M7.647 2.146a.5.5 0 0 1 .708 0C9.595 3.39 10.969 4 12.5 4a.5.5 0 0 1 .5.5v1.1a5.5 5.5 0 0 0-7.496 7.204C3.844 11.588 3 9.81 3 7.5v-3a.5.5 0 0 1 .5-.5c1.53 0 2.904-.611 4.147-1.854ZM15 10.5a4.5 4.5 0 1 1-9 0a4.5 4.5 0 0 1 9 0Zm-4-2a.5.5 0 0 0-1 0V10H8.5a.5.5 0 0 0 0 1H10v1.5a.5.5 0 0 0 1 0V11h1.5a.5.5 0 0 0 0-1H11V8.5Z"/></svg>
+                        </button>
+                        <!-- Delete -->
+                        <button data-modal-toggle="popup-delete-encryption-key" type="button" id="delete-encryption-key" class="hidden inline-flex w-32 items-center justify-center py-2 px-4 ml-2 text-sm font-medium text-red-500 hover:text-red-400 rounded-lg border-2 border-gray-800 hover:bg-gray-700" data-ripple-dark="true">
+                            Delete
+                            <svg class="w-4 h-4 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 36 36"><path fill="currentColor" d="M31.25 7.4a43.79 43.79 0 0 1-6.62-2.35a45 45 0 0 1-6.08-3.21L18 1.5l-.54.35a45 45 0 0 1-6.08 3.21A43.79 43.79 0 0 1 4.75 7.4L4 7.59v8.34c0 13.39 13.53 18.4 13.66 18.45l.34.12l.34-.12c.14 0 13.66-5.05 13.66-18.45V7.59Zm-6.74 14.15a1.4 1.4 0 0 1-2 2L18 19l-4.53 4.53a1.43 1.43 0 0 1-2 0a1.4 1.4 0 0 1 0-2L16 17l-4.53-4.53a1.4 1.4 0 1 1 2-2L18 15l4.53-4.53a1.4 1.4 0 0 1 2 2L20 17Z" class="clr-i-solid clr-i-solid-path-1"/><path fill="none" d="M0 0h36v36H0z"/></svg>
+                        </button>
+                        <!-- Delete POPUP -->
+                        <div id="popup-delete-encryption-key" tabindex="-1" class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                            <div class="relative w-full max-w-md max-h-full">
+                                <div class="relative rounded-lg shadow bg-gray-700">
+                                    <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-600 hover:text-gray-200 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center" data-modal-hide="popup-delete-encryption-key">
+                                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                                        </svg>
+                                        <span class="sr-only">Close modal</span>
+                                    </button>
+                                    <div class="p-6 text-center">
+                                        <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 26 26"><path fill="currentColor" d="M23.633 5.028a1.074 1.074 0 0 0-.777-.366c-2.295-.06-5.199-2.514-7.119-3.477C14.551.592 13.769.201 13.18.098a1.19 1.19 0 0 0-.359.001c-.589.103-1.372.494-2.556 1.087c-1.921.962-4.825 3.417-7.121 3.476c-.295.008-.577.14-.777.366a1.167 1.167 0 0 0-.291.834c.494 10.023 4.088 16.226 10.396 19.831c.164.093.346.141.528.141s.364-.048.528-.141c6.308-3.605 9.902-9.808 10.396-19.831a1.167 1.167 0 0 0-.291-.834zm-6.576 11.056l-.974.973a.46.46 0 0 1-.649 0L13 14.623l-2.434 2.434a.458.458 0 0 1-.649-.002l-.975-.971a.462.462 0 0 1 0-.65l2.434-2.433l-2.434-2.434a.46.46 0 0 1 0-.648l.974-.974a.456.456 0 0 1 .649 0L13 11.379l2.434-2.434a.455.455 0 0 1 .648 0l.975.972a.462.462 0 0 1 0 .65l-2.434 2.434l2.434 2.433a.464.464 0 0 1 0 .65z"/></svg>
+                                        <h3 class="mb-5 text-lg font-normal text-gray-400">Are you sure you want to delete the Encryption key?</h3>
+                                        <button id="delete-encryption-key-yes" data-modal-hide="popup-delete-encryption-key" type="button" class="text-gray-100 bg-red-500 hover:bg-red-500 font-medium rounded-lg border-2 border-red-500 text-sm inline-flex items-center px-5 py-2.5 text-center mr-2" data-ripple-dark="true">
+                                            Yes, I'm sure
+                                        </button>
+                                        <button data-modal-hide="popup-delete-encryption-key" type="button" class="text-gray-300 bg-gray-700 hover:bg-gray-600 rounded-lg border-2 border-gray-500 text-sm font-medium px-5 py-2.5 hover:text-gray-200 focus:z-10" data-ripple-dark="true">No, cancel</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Password >>>-->
+
+                <div data-input-requirements class="hidden relative flex p-4 my-4 text-sm rounded-lg bg-gray-800" id="pass-requirements" role="alert">
+                    <svg class="flex-shrink-0 inline w-4 h-4 mr-3 mt-0.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+                    </svg>
+                    <span class="sr-only">Info</span>
+                    <div>
+                        <span class="font-medium text-blue-400">Ensure that these requirements are met:</span>
+                        <ul class="mt-1.5 ml-4 list-disc list-inside text-gray-400">
+                            <li>Insert data in Data Console</li>
+                            <li>Add strong password</li>
+                            <li>Strong password contains at least: 8 characters, an uppercase, a lowercase, a number, and a symbol</li>
+                        </ul>
+                    </div>
+                    <button type="button" class="absolute right-4 top-4 ml-2 -mx-1.5 -my-1.5 text-gray-400 hover:text-gray-200 rounded-lg p-1.5 hover:bg-gray-600 inline-flex items-center justify-center h-8 w-8" data-dismiss-target="#pass-requirements" aria-label="Close">
+                        <span class="sr-only">Close</span>
+                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                        </svg>
+                    </button>
+                </div>
+
+
+                <div class="flex justify-end items-center gap-4 my-8">
+                    <button id="decrypt-button" class="inline-flex items-center px-8 py-3 text-sm font-medium text-purple-400 border-2 border-gray-800 rounded-lg hover:bg-purple-700 hover:text-purple-200 outline-none" data-ripple-dark="true">
+                        Decrypt
+                        <svg aria-hidden="true" class="w-4 h-4 ml-3" fill="currentColor" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48"><mask id="ipSCycleOne0"><g fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"><path d="M6 20c0-8 4-12 12-12m22 22c0 8-4 12-12 12"/><path fill="#fff" d="M28 18c0-5.523 4.477-10 10-10h4v14H28v-4ZM6 28h14v4c0 5.523-4.477 10-10 10H6V28Z"/></g></mask><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSCycleOne0)"/></svg>
+                    </button>
+                    <button id="encrypt-button" class="inline-flex items-center px-8 py-3 text-sm font-medium text-green-400 border-2 border-gray-800 rounded-lg hover:bg-green-700 hover:text-green-200 outline-none" data-ripple-dark="true">
+                        Encrypt
+                        <svg aria-hidden="true" class="w-4 h-4 ml-3" fill="currentColor" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><path fill="currentColor" d="M24.26 32H7.739a1.28 1.28 0 0 1-1.281-1.281V18.495c0-.708.573-1.286 1.281-1.286h1.552v-1.974c0-3.698 3.01-6.708 6.708-6.708s6.708 3.01 6.708 6.708v1.974h1.552c.708 0 1.281.578 1.281 1.286v12.224A1.28 1.28 0 0 1 24.259 32zm-7.421-6.76c1.521-.859.911-3.182-.839-3.182c-1.745.005-2.354 2.318-.839 3.182v1.656c0 1.115 1.677 1.115 1.677 0zm-3.698-8.032h5.724v-1.974c0-1.578-1.286-2.859-2.865-2.859s-2.859 1.281-2.859 2.859zm-7.078-1.817H2.079c-.651 0-1.172-.526-1.172-1.172s.521-1.172 1.172-1.172h3.984c.646 0 1.172.526 1.172 1.172s-.526 1.172-1.172 1.172zM8.87 9.12a1.14 1.14 0 0 1-.74-.271L4.974 6.255a1.166 1.166 0 0 1-.156-1.646a1.166 1.166 0 0 1 1.646-.161L9.62 7.042c.849.698.349 2.078-.75 2.073zM16 6.359a1.174 1.174 0 0 1-1.172-1.172V1.171c0-.646.526-1.172 1.172-1.172s1.172.526 1.172 1.172v4.016c0 .646-.526 1.172-1.172 1.172zm7.13 2.761c-1.104 0-1.599-1.38-.75-2.078l3.156-2.594c1.208-.99 2.693.818 1.49 1.813L23.87 8.855a1.16 1.16 0 0 1-.74.266zm6.792 6.271h-4.021c-.651 0-1.172-.526-1.172-1.172s.521-1.172 1.172-1.172h4.021c.651 0 1.172.526 1.172 1.172s-.521 1.172-1.172 1.172z"/></svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- 
+                >> -------------------------------------------------------------------------------------------------------------------------------- <<
+                >  |    Options                                                                                                              v1.0.0
+                >> -------------------------------------------------------------------------------------------------------------------------------- <<
+            -->
+            <!--<<<
+                - MORE OPTIONS
+                    > PDF Encryption
+                    > ZIP Encryption
+                    > Dowload PDF, ZIP
+            -->
+            <div class="container max-w-3xl">        
+                <div class="relative text-gray-400 sm:border-l-2 border-gray-800">                  
+                    <div class="block h-16 mb-10 sm:ml-6">
+                        <!-- Empty Space to connect cipher text to the other options -->
+                    </div>
+                    <!-- <<< PDF Encryption -->
+                    <div class="mb-10 sm:ml-6 flex flex-row justify-between items-center">
+                        <div class="hidden sm:block">
+                            <div class="hidden sm:flex absolute flex items-center justify-center w-8 h-8 bg-gray-700 rounded-full -left-4 ring-4 ring-gray-800">
+                                <svg class="w-5 h-5 text-red-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16"><g fill="currentColor"><path d="M5.523 10.424c.14-.082.293-.162.459-.238a7.878 7.878 0 0 1-.45.606c-.28.337-.498.516-.635.572a.266.266 0 0 1-.035.012a.282.282 0 0 1-.026-.044c-.056-.11-.054-.216.04-.36c.106-.165.319-.354.647-.548zm2.455-1.647c-.119.025-.237.05-.356.078a21.035 21.035 0 0 0 .5-1.05a11.96 11.96 0 0 0 .51.858c-.217.032-.436.07-.654.114zm2.525.939a3.888 3.888 0 0 1-.435-.41c.228.005.434.022.612.054c.317.057.466.147.518.209a.095.095 0 0 1 .026.064a.436.436 0 0 1-.06.2a.307.307 0 0 1-.094.124a.107.107 0 0 1-.069.015c-.09-.003-.258-.066-.498-.256zM8.278 4.97c-.04.244-.108.524-.2.829a4.86 4.86 0 0 1-.089-.346c-.076-.353-.087-.63-.046-.822c.038-.177.11-.248.196-.283a.517.517 0 0 1 .145-.04c.013.03.028.092.032.198c.005.122-.007.277-.038.465z"/><path fill-rule="evenodd" d="M4 0h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2zm.165 11.668c.09.18.23.343.438.419c.207.075.412.04.58-.03c.318-.13.635-.436.926-.786c.333-.401.683-.927 1.021-1.51a11.64 11.64 0 0 1 1.997-.406c.3.383.61.713.91.95c.28.22.603.403.934.417a.856.856 0 0 0 .51-.138c.155-.101.27-.247.354-.416c.09-.181.145-.37.138-.563a.844.844 0 0 0-.2-.518c-.226-.27-.596-.4-.96-.465a5.76 5.76 0 0 0-1.335-.05a10.954 10.954 0 0 1-.98-1.686c.25-.66.437-1.284.52-1.794c.036-.218.055-.426.048-.614a1.238 1.238 0 0 0-.127-.538a.7.7 0 0 0-.477-.365c-.202-.043-.41 0-.601.077c-.377.15-.576.47-.651.823c-.073.34-.04.736.046 1.136c.088.406.238.848.43 1.295a19.707 19.707 0 0 1-1.062 2.227a7.662 7.662 0 0 0-1.482.645c-.37.22-.699.48-.897.787c-.21.326-.275.714-.08 1.103z"/></g></svg>                       
+                            </div>
+                            <h3 class="ml-2 font-medium leading-tight hidden md:block">PDF</h3>
+                            <p class="ml-2 text-xs hidden md:block">Encrypt PDF</p>
+                        </div>
+
+                        <div class="w-full max-w-xl sm:ml-5 md:ml-0">
+                            <div class="border-2 border-gray-800 flex flex-col shadow-sm rounded-lg overflow-hidden">
+                                <div class="rounded-t-md py-2 px-4 md:px-5">
+                                    <div class="mt-3 flex justify-start items-center gap-1">
+                                        <div class="text-xs font-medium inline-flex items-center px-2 py-1 rounded-md bg-green-800 text-green-400">
+                                            <svg class="w-3 h-3 mr-1" fill="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M11.1 15h1.8q.225 0 .388-.188t.112-.412l-.475-2.625q.5-.25.788-.725T14 10q0-.825-.588-1.413T12 8q-.825 0-1.413.588T10 10q0 .575.288 1.05t.787.725L10.6 14.4q-.05.225.113.413T11.1 15Zm.9 6.9q-.175 0-.325-.025t-.3-.075Q8 20.675 6 17.637T4 11.1V6.375q0-.625.363-1.125t.937-.725l6-2.25q.35-.125.7-.125t.7.125l6 2.25q.575.225.938.725T20 6.375V11.1q0 3.5-2 6.538T12.625 21.8q-.15.05-.3.075T12 21.9Z"/></svg>
+                                            Encryption
+                                        </div>
+                                        <div class="text-xs font-medium inline-flex items-center px-2 py-1 rounded-md bg-blue-900 text-blue-400">
+                                            <svg class="w-3 h-3 mr-1" fill="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M12.6 18.06c-.36.28-.87.28-1.23 0l-6.15-4.78a.991.991 0 0 0-1.22 0a.997.997 0 0 0 0 1.57l6.76 5.26c.72.56 1.73.56 2.46 0l6.76-5.26c.51-.4.51-1.17 0-1.57l-.01-.01a.991.991 0 0 0-1.22 0l-6.15 4.79zm.63-3.02l6.76-5.26c.51-.4.51-1.18 0-1.58l-6.76-5.26c-.72-.56-1.73-.56-2.46 0L4.01 8.21c-.51.4-.51 1.18 0 1.58l6.76 5.26c.72.56 1.74.56 2.46-.01z"/></svg>
+                                            Layer 2
+                                        </div>
+                                        <div class="text-xs font-medium inline-flex items-center px-2 py-1 rounded-md bg-red-800 text-red-400">
+                                            <svg class="w-3 h-3 mr-1" fill="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 32 32"><path fill="currentColor" d="M9 16a1 1 0 0 0-1 1v5a1 1 0 1 0 2 0v-1h.5a2.5 2.5 0 0 0 0-5H9Zm1.5 3H10v-1h.5a.5.5 0 0 1 0 1Zm3.5-2a1 1 0 0 1 1-1h.5a3.5 3.5 0 1 1 0 7H15a1 1 0 0 1-1-1v-5Zm2 3.915a1.5 1.5 0 0 0 0-2.83v2.83ZM20 22v-5a1 1 0 0 1 1-1h3a1 1 0 1 1 0 2h-2v1h2a1 1 0 1 1 0 2h-2v1a1 1 0 1 1-2 0ZM17 9V2H8a3 3 0 0 0-3 3v8a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2v1a3 3 0 0 0 3 3h16a3 3 0 0 0 3-3v-1a2 2 0 0 0 2-2v-9a2 2 0 0 0-2-2v-1h-7a3 3 0 0 1-3-3Zm10 6v9H5v-9h22Zm-8-6V2.117a3 3 0 0 1 1.293.762l5.828 5.828A3 3 0 0 1 26.883 10H20a1 1 0 0 1-1-1Z"/></svg>
+                                            PDF
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="p-4 md:p-5">
+                                    <h3 class="text-lg text-gray-100">PDF Encryption</h3>
+                                    <p class="mt-2 text-gray-400">
+                                        PDF makes encrypted information intact. Encrypted information can be encrypted in a PDF file
+                                        and this can be a second security layer. It is still available for download like a simple PDF.
+                                    </p>
+                                    <!--<<< PDF Password -->
+                                    <div class="mt-4 w-full h-max">   
+                                        <label for="encryption-key" class="text-sm"><nobr>PDF Password</nobr></label>
+                                        <div class="w-full flex items-center mt-2">
+                                            <div class="relative w-full">
+                                                <div class="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none">
+                                                    <svg class="w-4 h-4 text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M17 9V7c0-2.8-2.2-5-5-5S7 4.2 7 7v2c-1.7 0-3 1.3-3 3v7c0 1.7 1.3 3 3 3h10c1.7 0 3-1.3 3-3v-7c0-1.7-1.3-3-3-3zM9 7c0-1.7 1.3-3 3-3s3 1.3 3 3v2H9V7z"/></svg>
+                                                </div>
+                                                <input type="password" id="pdf-password" class="bg-gray-900 block w-full px-10 py-2 border-2 border-gray-800 text-gray-300 text-sm rounded-lg outline-none" placeholder="Password" value="" required>
+                                                <button data-show-pdf-pass type="button" class="absolute inset-y-0 right-0 flex items-center pr-3 outline-none">
+                                                    <svg class="w-4 h-4 text-gray-400 hover:text-gray-200" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 20 20"><g fill="currentColor"><path fill-rule="evenodd" d="M3.707 2.293a1 1 0 0 0-1.414 1.414l14 14a1 1 0 0 0 1.414-1.414l-1.473-1.473A10.014 10.014 0 0 0 19.542 10C18.268 5.943 14.478 3 10 3a9.958 9.958 0 0 0-4.512 1.074l-1.78-1.781Zm4.261 4.26l1.514 1.515a2.003 2.003 0 0 1 2.45 2.45l1.514 1.514a4 4 0 0 0-5.478-5.478Z" clip-rule="evenodd"/><path d="M12.454 16.697L9.75 13.992a4 4 0 0 1-3.742-3.741L2.335 6.578A9.98 9.98 0 0 0 .458 10c1.274 4.057 5.065 7 9.542 7c.847 0 1.669-.105 2.454-.303Z"/></g></svg>
+                                                    <svg class="hidden w-4 h-4 text-gray-400 hover:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g id="feEye0" fill="none" fill-rule="evenodd" stroke="none" stroke-width="1"><g id="feEye1" fill="currentColor"><path id="feEye2" d="M2 12c.945-4.564 5.063-8 10-8s9.055 3.436 10 8c-.945 4.564-5.063 8-10 8s-9.055-3.436-10-8Zm10 5a5 5 0 1 0 0-10a5 5 0 0 0 0 10Zm0-2a3 3 0 1 0 0-6a3 3 0 0 0 0 6Z"/></g></g></svg>
+                                                </button>
+                                            </div>
+                    
+                                            <button type="button" id="add-pdf-pass" class="inline-flex w-32 items-center justify-center py-2 px-4 ml-2 text-sm text-green-500 hover:text-green-400 rounded-lg border-2 border-gray-800 hover:bg-gray-700 outline-none" data-ripple-dark="true">
+                                                Add
+                                                <svg class="w-4 h-4 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 16 16"><path fill="currentColor" d="M7.647 2.146a.5.5 0 0 1 .708 0C9.595 3.39 10.969 4 12.5 4a.5.5 0 0 1 .5.5v1.1a5.5 5.5 0 0 0-7.496 7.204C3.844 11.588 3 9.81 3 7.5v-3a.5.5 0 0 1 .5-.5c1.53 0 2.904-.611 4.147-1.854ZM15 10.5a4.5 4.5 0 1 1-9 0a4.5 4.5 0 0 1 9 0Zm-4-2a.5.5 0 0 0-1 0V10H8.5a.5.5 0 0 0 0 1H10v1.5a.5.5 0 0 0 1 0V11h1.5a.5.5 0 0 0 0-1H11V8.5Z"/></svg>
+                                            </button>
+                                            <!-- Delete -->
+                                            <button data-modal-toggle="popup-delete-pdf-pass" type="button" id="delete-pdf-pass" class="hidden inline-flex w-32 items-center justify-center py-2 px-4 ml-2 text-sm font-medium text-red-500 hover:text-red-400 rounded-lg border-2 border-gray-800 hover:bg-gray-700" data-ripple-dark="true">
+                                                Delete
+                                                <svg class="w-4 h-4 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 36 36"><path fill="currentColor" d="M31.25 7.4a43.79 43.79 0 0 1-6.62-2.35a45 45 0 0 1-6.08-3.21L18 1.5l-.54.35a45 45 0 0 1-6.08 3.21A43.79 43.79 0 0 1 4.75 7.4L4 7.59v8.34c0 13.39 13.53 18.4 13.66 18.45l.34.12l.34-.12c.14 0 13.66-5.05 13.66-18.45V7.59Zm-6.74 14.15a1.4 1.4 0 0 1-2 2L18 19l-4.53 4.53a1.43 1.43 0 0 1-2 0a1.4 1.4 0 0 1 0-2L16 17l-4.53-4.53a1.4 1.4 0 1 1 2-2L18 15l4.53-4.53a1.4 1.4 0 0 1 2 2L20 17Z" class="clr-i-solid clr-i-solid-path-1"/><path fill="none" d="M0 0h36v36H0z"/></svg>
+                                            </button>
+                                            <!-- Delete POPUP -->
+                                            <div id="popup-delete-pdf-pass" tabindex="-1" class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                                                <div class="relative w-full max-w-md max-h-full">
+                                                    <div class="relative rounded-lg shadow bg-gray-700">
+                                                        <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-600 hover:text-gray-200 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center" data-modal-hide="popup-delete-pdf-pass">
+                                                            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                                                            </svg>
+                                                            <span class="sr-only">Close modal</span>
+                                                        </button>
+                                                        <div class="p-6 text-center">
+                                                            <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 26 26"><path fill="currentColor" d="M23.633 5.028a1.074 1.074 0 0 0-.777-.366c-2.295-.06-5.199-2.514-7.119-3.477C14.551.592 13.769.201 13.18.098a1.19 1.19 0 0 0-.359.001c-.589.103-1.372.494-2.556 1.087c-1.921.962-4.825 3.417-7.121 3.476c-.295.008-.577.14-.777.366a1.167 1.167 0 0 0-.291.834c.494 10.023 4.088 16.226 10.396 19.831c.164.093.346.141.528.141s.364-.048.528-.141c6.308-3.605 9.902-9.808 10.396-19.831a1.167 1.167 0 0 0-.291-.834zm-6.576 11.056l-.974.973a.46.46 0 0 1-.649 0L13 14.623l-2.434 2.434a.458.458 0 0 1-.649-.002l-.975-.971a.462.462 0 0 1 0-.65l2.434-2.433l-2.434-2.434a.46.46 0 0 1 0-.648l.974-.974a.456.456 0 0 1 .649 0L13 11.379l2.434-2.434a.455.455 0 0 1 .648 0l.975.972a.462.462 0 0 1 0 .65l-2.434 2.434l2.434 2.433a.464.464 0 0 1 0 .65z"/></svg>
+                                                            <h3 class="mb-5 text-lg font-normal text-gray-400">Are you sure you want to delete the PDF Password?</h3>
+                                                            <button id="delete-pdf-pass-yes" data-modal-hide="popup-delete-pdf-pass" type="button" class="text-gray-100 bg-red-500 hover:bg-red-500 font-medium rounded-lg border-2 border-red-500 text-sm inline-flex items-center px-5 py-2.5 text-center mr-2" data-ripple-dark="true">
+                                                                Yes, I'm sure
+                                                            </button>
+                                                            <button data-modal-hide="popup-delete-pdf-pass" type="button" class="text-gray-300 bg-gray-700 hover:bg-gray-600 rounded-lg border-2 border-gray-500 text-sm font-medium px-5 py-2.5 hover:text-gray-200 focus:z-10" data-ripple-dark="true">No, cancel</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- PDF Password >>>-->
+                                    
+                                    <div data-pdf-pass-req class="hidden relative flex p-4 my-4 text-sm rounded-lg bg-gray-800" id="pdf-pass-req" role="alert">
+                                        <svg class="flex-shrink-0 inline w-4 h-4 mr-3 mt-0.5 text-blue-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                            <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+                                        </svg>
+                                        <span class="sr-only">Info</span>
+                                        <div>
+                                            <span class="font-medium text-blue-400">Ensure that the password is strong:</span>
+                                            <ul class="mt-1.5 ml-4 list-disc list-inside text-gray-400">
+                                                <li>Strong password contains at least: 8 characters, an uppercase, a lowercase, a number, and a symbol</li>
+                                            </ul>
+                                        </div>
+                                        <button type="button" class="absolute right-4 top-4 ml-2 -mx-1.5 -my-1.5 text-gray-400 hover:text-gray-200 rounded-lg p-1.5 hover:bg-gray-600 inline-flex items-center justify-center h-8 w-8" data-dismiss-target="#pdf-pass-req" aria-label="Close">
+                                            <span class="sr-only">Close</span>
+                                            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                                            </svg>
+                                        </button>
+                                    </div>
+
+                                    <p class="text-right mt-8">
+                                        <button id="pdf-download" class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-300 border-2 border-gray-800 rounded-lg hover:bg-gray-700 hover:text-gray-200 outline-none" data-ripple-dark="true">
+                                            <svg class="w-3.5 h-3.5 mr-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                                <path d="M14.707 7.793a1 1 0 0 0-1.414 0L11 10.086V1.5a1 1 0 0 0-2 0v8.586L6.707 7.793a1 1 0 1 0-1.414 1.414l4 4a1 1 0 0 0 1.416 0l4-4a1 1 0 0 0-.002-1.414Z"/>
+                                                <path d="M18 12h-2.55l-2.975 2.975a3.5 3.5 0 0 1-4.95 0L4.55 12H2a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2Zm-3 5a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"/>
+                                            </svg>
+                                            Download PDF
+                                        </button>
+                                        <a href="" id="download-pdf-hidden-anchor" download="xEncryption"></a>
+                                    </p>
+                                    
+                                    <div data-download-pdf-req class="hidden relative flex p-4 my-4 text-sm rounded-lg bg-gray-800" id="download-pdf-req" role="alert">
+                                        <svg class="flex-shrink-0 inline w-4 h-4 mr-3 mt-0.5 text-blue-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                            <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+                                        </svg>
+                                        <span class="sr-only">Info</span>
+                                        <div>
+                                            <span class="font-medium text-blue-400">Ensure that Transformed Data is available:</span>
+                                            <ul class="mt-1.5 ml-4 list-disc list-inside text-gray-400">
+                                                <li>Add the transformed data by encryption or decryption the data</li>
+                                            </ul>
+                                        </div>
+                                        <button type="button" class="absolute right-4 top-4 ml-2 -mx-1.5 -my-1.5 text-gray-400 hover:text-gray-200 rounded-lg p-1.5 hover:bg-gray-600 inline-flex items-center justify-center h-8 w-8" data-dismiss-target="#download-pdf-req" aria-label="Close">
+                                            <span class="sr-only">Close</span>
+                                            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- PDF Encryption >>> -->
+                    <!-- <<< ZIP Encryption -->
+                    <div class="mb-10 sm:ml-6 flex flex-row justify-between items-center">
+                        <div class="hidden sm:block">
+                            <div class="hidden sm:flex absolute flex items-center justify-center w-8 h-8 bg-gray-700 rounded-full -left-4 ring-4 ring-gray-800">
+                                <svg class="w-5 h-5 text-yellow-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16"><path fill="currentColor" d="M9 4h-.347L6.094 6.367a.5.5 0 0 1-.34.133L2 6.499V11a2 2 0 0 0 2 2h5.996v-2h-.5a.5.5 0 0 1 0-1h.5V9H9.5a.5.5 0 0 1 0-1h.496V7H9.5a.5.5 0 0 1-.5-.5V4Zm1.996 9h1.002a2 2 0 0 0 2-2V6A2 2 0 0 0 12 4v2.5a.5.5 0 0 1-.5.5h-.504v2h.504a.5.5 0 1 1 0 1h-.504v3ZM10 4h1v2h-1V4ZM2 5.499V5a2 2 0 0 1 2-2h1.755a.5.5 0 0 1 .313.11L7.176 4h.005L5.559 5.5L2 5.499Z"/></svg>
+                            </div>
+                            <h3 class="ml-2 font-medium leading-tight hidden md:block">ZIP</h3>
+                            <p class="ml-2 text-xs hidden md:block">Encrypt ZIP</p>
+                        </div>
+                        
+                        <div class="w-full max-w-xl sm:ml-5 md:ml-0">
+                            <div class="border-2 border-gray-800 flex flex-col shadow-sm rounded-lg overflow-hidden">
+                                <div class="rounded-t-md py-2 px-4 md:px-5">
+                                    <div class="mt-3 flex justify-start items-center gap-1">
+                                        <div class="text-xs font-medium inline-flex items-center px-2 py-1 rounded-md bg-green-800 text-green-400">
+                                            <svg class="w-3 h-3 mr-1" aria-hidden="true" fill="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M11.1 15h1.8q.225 0 .388-.188t.112-.412l-.475-2.625q.5-.25.788-.725T14 10q0-.825-.588-1.413T12 8q-.825 0-1.413.588T10 10q0 .575.288 1.05t.787.725L10.6 14.4q-.05.225.113.413T11.1 15Zm.9 6.9q-.175 0-.325-.025t-.3-.075Q8 20.675 6 17.637T4 11.1V6.375q0-.625.363-1.125t.937-.725l6-2.25q.35-.125.7-.125t.7.125l6 2.25q.575.225.938.725T20 6.375V11.1q0 3.5-2 6.538T12.625 21.8q-.15.05-.3.075T12 21.9Z"/></svg>
+                                            Encryption
+                                        </div>
+                                        <div class="text-xs font-medium inline-flex items-center px-2 py-1 rounded-md bg-blue-900 text-blue-400">
+                                            <svg class="w-3 h-3 mr-1" fill="currentColor" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M12.6 18.06c-.36.28-.87.28-1.23 0l-6.15-4.78a.991.991 0 0 0-1.22 0a.997.997 0 0 0 0 1.57l6.76 5.26c.72.56 1.73.56 2.46 0l6.76-5.26c.51-.4.51-1.17 0-1.57l-.01-.01a.991.991 0 0 0-1.22 0l-6.15 4.79zm.63-3.02l6.76-5.26c.51-.4.51-1.18 0-1.58l-6.76-5.26c-.72-.56-1.73-.56-2.46 0L4.01 8.21c-.51.4-.51 1.18 0 1.58l6.76 5.26c.72.56 1.74.56 2.46-.01z"/></svg>
+                                            Layer 3
+                                        </div>
+                                        <div class="text-xs font-medium inline-flex items-center px-2 py-1 rounded-md bg-yellow-700 text-yellow-400">
+                                            <svg class="w-3 h-3 mr-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M4.172 3.172C3 4.343 3 6.229 3 10v4c0 3.771 0 5.657 1.172 6.828C5.343 22 7.229 22 11 22h2c3.771 0 5.657 0 6.828-1.172C21 19.657 21 17.771 21 14v-4c0-3.771 0-5.657-1.172-6.828C18.657 2 16.771 2 13 2h-1v2h1.5c.471 0 .707 0 .854.146c.146.147.146.383.146.854s0 .707-.146.854C14.207 6 13.97 6 13.5 6H12v2h1.5c.471 0 .707 0 .854.146c.146.147.146.383.146.854s0 .707-.146.854C14.207 10 13.97 10 13.5 10H13c-.471 0-.707 0-.854-.146C12 9.707 12 9.47 12 9V8h-1.5c-.471 0-.707 0-.854-.146C9.5 7.707 9.5 7.47 9.5 7s0-.707.146-.854C9.793 6 10.03 6 10.5 6H12V4h-1.5c-.471 0-.707 0-.854-.146C9.5 3.707 9.5 3.47 9.5 3v-.997c-2.794.02-4.324.164-5.328 1.169ZM9.5 12.875V13a2.5 2.5 0 0 0 5 0v-.125a.875.875 0 0 0-.875-.875h-3.25a.875.875 0 0 0-.875.875Z" clip-rule="evenodd"/></svg>
+                                            ZIP
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="p-4 md:p-5">
+                                    <h3 class="text-lg text-gray-100">ZIP Encryption</h3>
+                                    <p class="mt-2 text-gray-400">
+                                        The ecnrypted information can be entered into the PDF and then into the ZIP.
+                                        As a third security layer, the ZIP file can be encrypted.
+                                        (soon)
+                                    </p>
+                                    
+                                    <!--<<< ZIP Password -->
+                                    <div class="hidden mt-4 w-full h-max">   
+                                        <label for="encryption-key" class="text-sm"><nobr>ZIP Password</nobr></label>
+                                        <div class="w-full flex items-center mt-2">
+                                            <div class="relative w-full">
+                                                <div class="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none">
+                                                    <svg class="w-4 h-4 text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M17 9V7c0-2.8-2.2-5-5-5S7 4.2 7 7v2c-1.7 0-3 1.3-3 3v7c0 1.7 1.3 3 3 3h10c1.7 0 3-1.3 3-3v-7c0-1.7-1.3-3-3-3zM9 7c0-1.7 1.3-3 3-3s3 1.3 3 3v2H9V7z"/></svg>
+                                                </div>
+                                                <input type="password" id="zip-password" class="bg-gray-900 block w-full px-10 py-2 border-2 border-gray-800 text-gray-300 text-sm rounded-lg outline-none" placeholder="Password" value="" required>
+                                                <button data-show-zip-pass type="button" class="absolute inset-y-0 right-0 flex items-center pr-3 outline-none">
+                                                    <svg class="w-4 h-4 text-gray-400 hover:text-gray-200" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 20 20"><g fill="currentColor"><path fill-rule="evenodd" d="M3.707 2.293a1 1 0 0 0-1.414 1.414l14 14a1 1 0 0 0 1.414-1.414l-1.473-1.473A10.014 10.014 0 0 0 19.542 10C18.268 5.943 14.478 3 10 3a9.958 9.958 0 0 0-4.512 1.074l-1.78-1.781Zm4.261 4.26l1.514 1.515a2.003 2.003 0 0 1 2.45 2.45l1.514 1.514a4 4 0 0 0-5.478-5.478Z" clip-rule="evenodd"/><path d="M12.454 16.697L9.75 13.992a4 4 0 0 1-3.742-3.741L2.335 6.578A9.98 9.98 0 0 0 .458 10c1.274 4.057 5.065 7 9.542 7c.847 0 1.669-.105 2.454-.303Z"/></g></svg>
+                                                    <svg class="hidden w-4 h-4 text-gray-400 hover:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g id="feEye0" fill="none" fill-rule="evenodd" stroke="none" stroke-width="1"><g id="feEye1" fill="currentColor"><path id="feEye2" d="M2 12c.945-4.564 5.063-8 10-8s9.055 3.436 10 8c-.945 4.564-5.063 8-10 8s-9.055-3.436-10-8Zm10 5a5 5 0 1 0 0-10a5 5 0 0 0 0 10Zm0-2a3 3 0 1 0 0-6a3 3 0 0 0 0 6Z"/></g></g></svg>
+                                                </button>
+                                            </div>
+                    
+                                            <button type="button" id="add-zip-pass" class="inline-flex w-32 items-center justify-center py-2 px-4 ml-2 text-sm text-green-500 hover:text-green-400 rounded-lg border-2 border-gray-800 hover:bg-gray-700 outline-none" data-ripple-dark="true">
+                                                Add
+                                                <svg class="w-4 h-4 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 16 16"><path fill="currentColor" d="M7.647 2.146a.5.5 0 0 1 .708 0C9.595 3.39 10.969 4 12.5 4a.5.5 0 0 1 .5.5v1.1a5.5 5.5 0 0 0-7.496 7.204C3.844 11.588 3 9.81 3 7.5v-3a.5.5 0 0 1 .5-.5c1.53 0 2.904-.611 4.147-1.854ZM15 10.5a4.5 4.5 0 1 1-9 0a4.5 4.5 0 0 1 9 0Zm-4-2a.5.5 0 0 0-1 0V10H8.5a.5.5 0 0 0 0 1H10v1.5a.5.5 0 0 0 1 0V11h1.5a.5.5 0 0 0 0-1H11V8.5Z"/></svg>
+                                            </button>
+                                            <!-- Delete -->
+                                            <button data-modal-toggle="popup-delete-zip-pass" type="button" id="delete-zip-pass" class="hidden inline-flex w-32 items-center justify-center py-2 px-4 ml-2 text-sm font-medium text-red-500 hover:text-red-400 rounded-lg border-2 border-gray-800 hover:bg-gray-700" data-ripple-dark="true">
+                                                Delete
+                                                <svg class="w-4 h-4 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 36 36"><path fill="currentColor" d="M31.25 7.4a43.79 43.79 0 0 1-6.62-2.35a45 45 0 0 1-6.08-3.21L18 1.5l-.54.35a45 45 0 0 1-6.08 3.21A43.79 43.79 0 0 1 4.75 7.4L4 7.59v8.34c0 13.39 13.53 18.4 13.66 18.45l.34.12l.34-.12c.14 0 13.66-5.05 13.66-18.45V7.59Zm-6.74 14.15a1.4 1.4 0 0 1-2 2L18 19l-4.53 4.53a1.43 1.43 0 0 1-2 0a1.4 1.4 0 0 1 0-2L16 17l-4.53-4.53a1.4 1.4 0 1 1 2-2L18 15l4.53-4.53a1.4 1.4 0 0 1 2 2L20 17Z" class="clr-i-solid clr-i-solid-path-1"/><path fill="none" d="M0 0h36v36H0z"/></svg>
+                                            </button>
+                                            <!-- Delete POPUP -->
+                                            <div id="popup-delete-zip-pass" tabindex="-1" class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                                                <div class="relative w-full max-w-md max-h-full">
+                                                    <div class="relative rounded-lg shadow bg-gray-700">
+                                                        <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-600 hover:text-gray-200 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center" data-modal-hide="popup-delete-zip-pass">
+                                                            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                                                            </svg>
+                                                            <span class="sr-only">Close modal</span>
+                                                        </button>
+                                                        <div class="p-6 text-center">
+                                                            <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 26 26"><path fill="currentColor" d="M23.633 5.028a1.074 1.074 0 0 0-.777-.366c-2.295-.06-5.199-2.514-7.119-3.477C14.551.592 13.769.201 13.18.098a1.19 1.19 0 0 0-.359.001c-.589.103-1.372.494-2.556 1.087c-1.921.962-4.825 3.417-7.121 3.476c-.295.008-.577.14-.777.366a1.167 1.167 0 0 0-.291.834c.494 10.023 4.088 16.226 10.396 19.831c.164.093.346.141.528.141s.364-.048.528-.141c6.308-3.605 9.902-9.808 10.396-19.831a1.167 1.167 0 0 0-.291-.834zm-6.576 11.056l-.974.973a.46.46 0 0 1-.649 0L13 14.623l-2.434 2.434a.458.458 0 0 1-.649-.002l-.975-.971a.462.462 0 0 1 0-.65l2.434-2.433l-2.434-2.434a.46.46 0 0 1 0-.648l.974-.974a.456.456 0 0 1 .649 0L13 11.379l2.434-2.434a.455.455 0 0 1 .648 0l.975.972a.462.462 0 0 1 0 .65l-2.434 2.434l2.434 2.433a.464.464 0 0 1 0 .65z"/></svg>
+                                                            <h3 class="mb-5 text-lg font-normal text-gray-400">Are you sure you want to delete the ZIP Password?</h3>
+                                                            <button id="delete-zip-pass-yes" data-modal-hide="popup-delete-zip-pass" type="button" class="text-gray-100 bg-red-500 hover:bg-red-500 font-medium rounded-lg border-2 border-red-500 text-sm inline-flex items-center px-5 py-2.5 text-center mr-2" data-ripple-dark="true">
+                                                                Yes, I'm sure
+                                                            </button>
+                                                            <button data-modal-hide="popup-delete-zip-pass" type="button" class="text-gray-300 bg-gray-700 hover:bg-gray-600 rounded-lg border-2 border-gray-500 text-sm font-medium px-5 py-2.5 hover:text-gray-200 focus:z-10" data-ripple-dark="true">No, cancel</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- ZIP Password >>>-->
+                                    
+                                    <div data-zip-pass-req class="hidden relative flex p-4 my-4 text-sm rounded-lg bg-gray-800" id="zip-pass-req" role="alert">
+                                        <svg class="flex-shrink-0 inline w-4 h-4 mr-3 mt-0.5 text-blue-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                            <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+                                        </svg>
+                                        <span class="sr-only">Info</span>
+                                        <div>
+                                            <span class="font-medium text-blue-400">Ensure that the password is strong:</span>
+                                            <ul class="mt-1.5 ml-4 list-disc list-inside text-gray-400">
+                                                <li>Strong password contains at least: 8 characters, an uppercase, a lowercase, a number, and a symbol</li>
+                                            </ul>
+                                        </div>
+                                        <button type="button" class="absolute right-4 top-4 ml-2 -mx-1.5 -my-1.5 text-gray-400 hover:text-gray-200 rounded-lg p-1.5 hover:bg-gray-600 inline-flex items-center justify-center h-8 w-8" data-dismiss-target="#zip-pass-req" aria-label="Close">
+                                            <span class="sr-only">Close</span>
+                                            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ZIP Encryption >>> -->
+                    <!-- <<< Download -->
+                    <div class="mb-10 sm:ml-6 flex flex-row justify-between items-end">
+                        <div class="hidden sm:block">
+                            <div class="hidden sm:flex absolute flex items-center justify-center w-8 h-8 bg-gray-700 rounded-full -left-4 ring-4 ring-gray-800">
+                                <svg class="w-6 h-6 text-green-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2"><path stroke-dasharray="2 4" stroke-dashoffset="6" d="M12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21"><animate attributeName="stroke-dashoffset" dur="0.6s" repeatCount="indefinite" values="6;0"/></path><path stroke-dasharray="30" stroke-dashoffset="30" d="M12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.1s" dur="0.3s" values="30;0"/></path><path stroke-dasharray="10" stroke-dashoffset="10" d="M12 8v7.5"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.5s" dur="0.2s" values="10;0"/></path><path stroke-dasharray="6" stroke-dashoffset="6" d="M12 15.5l3.5 -3.5M12 15.5l-3.5 -3.5"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.7s" dur="0.2s" values="6;0"/></path></g></svg>
+                            </div>
+                            <h3 class="ml-2 font-medium leading-tight hidden md:block">Download</h3>
+                            <p class="ml-2 text-xs hidden md:block">ZIP, PDF</p>
+                        </div>
+                        
+                        <div class="w-full max-w-xl sm:ml-5 md:ml-0">
+                            <div class="w-full flex flex-col shadow-sm rounded-lg overflow-hidden">    
+                                <div class="w-full">
+                                    <h3 class="text-lg text-gray-200">
+                                        Download
+                                    </h3>
+                                    <p class="mt-2 text-gray-400">
+                                        <!-- xE allows you to add three security layeres for data and they are encrypted data, PDF, ZIP file.
+                                        Now structural access to professional encrypted data. -->
+                                        Structural access to professional encrypted data.
+                                    </p>                                  
+                                    <!--<<< Data Table -->
+                                    <div class="w-full mt-6 border-2 border-gray-800 rounded-lg overflow-hidden">
+                                        <div class="text-sm text-gray-200 border-b-2 border-gray-800 mb-2 py-3 px-3 rounded-t-sm grid grid-cols-12 items-center">
+                                            <div class="col-span-9">
+                                                Files
+                                            </div>
+                                            <div class="col-span-3 text-right mr-1"></div>
+                                        </div>
+                                        <div class="text-sm text-gray-300 py-2 px-3 grid grid-cols-12 items-center">
+                                            <div class="col-span-9 flex items-center">
+                                                <svg  class="w-5 h-5 mr-2.5 text-yellow-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M4.172 3.172C3 4.343 3 6.229 3 10v4c0 3.771 0 5.657 1.172 6.828C5.343 22 7.229 22 11 22h2c3.771 0 5.657 0 6.828-1.172C21 19.657 21 17.771 21 14v-4c0-3.771 0-5.657-1.172-6.828C18.657 2 16.771 2 13 2h-1v2h1.5c.471 0 .707 0 .854.146c.146.147.146.383.146.854s0 .707-.146.854C14.207 6 13.97 6 13.5 6H12v2h1.5c.471 0 .707 0 .854.146c.146.147.146.383.146.854s0 .707-.146.854C14.207 10 13.97 10 13.5 10H13c-.471 0-.707 0-.854-.146C12 9.707 12 9.47 12 9V8h-1.5c-.471 0-.707 0-.854-.146C9.5 7.707 9.5 7.47 9.5 7s0-.707.146-.854C9.793 6 10.03 6 10.5 6H12V4h-1.5c-.471 0-.707 0-.854-.146C9.5 3.707 9.5 3.47 9.5 3v-.997c-2.794.02-4.324.164-5.328 1.169ZM9.5 12.875V13a2.5 2.5 0 0 0 5 0v-.125a.875.875 0 0 0-.875-.875h-3.25a.875.875 0 0 0-.875.875Z" clip-rule="evenodd"/></svg>
+                                                xE.zip
+                                            </div>
+                                            <div class="col-span-3 ml-1 text-right">
+                                                <!-- <div class="text-xs font-medium inline-flex items-center px-2 py-1 rounded-md bg-green-800 text-green-400">
+                                                    <svg class="w-3 h-3" fill="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M11.1 15h1.8q.225 0 .388-.188t.112-.412l-.475-2.625q.5-.25.788-.725T14 10q0-.825-.588-1.413T12 8q-.825 0-1.413.588T10 10q0 .575.288 1.05t.787.725L10.6 14.4q-.05.225.113.413T11.1 15Zm.9 6.9q-.175 0-.325-.025t-.3-.075Q8 20.675 6 17.637T4 11.1V6.375q0-.625.363-1.125t.937-.725l6-2.25q.35-.125.7-.125t.7.125l6 2.25q.575.225.938.725T20 6.375V11.1q0 3.5-2 6.538T12.625 21.8q-.15.05-.3.075T12 21.9Z"/></svg>
+                                                    Encrypted
+                                                </div> -->
+                                            </div>
+                                        </div>
+                                        <div class="border-l-2 border-gray-800 ml-6 mb-3">
+                                            <div class="text-sm text-gray-300 py-2 px-3 grid grid-cols-12 items-center">
+                                                <div class="col-span-9 flex items-center">
+                                                    <svg class="w-5 h-5 mr-2.5 text-red-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16"><g fill="currentColor"><path d="M5.523 10.424c.14-.082.293-.162.459-.238a7.878 7.878 0 0 1-.45.606c-.28.337-.498.516-.635.572a.266.266 0 0 1-.035.012a.282.282 0 0 1-.026-.044c-.056-.11-.054-.216.04-.36c.106-.165.319-.354.647-.548zm2.455-1.647c-.119.025-.237.05-.356.078a21.035 21.035 0 0 0 .5-1.05a11.96 11.96 0 0 0 .51.858c-.217.032-.436.07-.654.114zm2.525.939a3.888 3.888 0 0 1-.435-.41c.228.005.434.022.612.054c.317.057.466.147.518.209a.095.095 0 0 1 .026.064a.436.436 0 0 1-.06.2a.307.307 0 0 1-.094.124a.107.107 0 0 1-.069.015c-.09-.003-.258-.066-.498-.256zM8.278 4.97c-.04.244-.108.524-.2.829a4.86 4.86 0 0 1-.089-.346c-.076-.353-.087-.63-.046-.822c.038-.177.11-.248.196-.283a.517.517 0 0 1 .145-.04c.013.03.028.092.032.198c.005.122-.007.277-.038.465z"/><path fill-rule="evenodd" d="M4 0h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2zm.165 11.668c.09.18.23.343.438.419c.207.075.412.04.58-.03c.318-.13.635-.436.926-.786c.333-.401.683-.927 1.021-1.51a11.64 11.64 0 0 1 1.997-.406c.3.383.61.713.91.95c.28.22.603.403.934.417a.856.856 0 0 0 .51-.138c.155-.101.27-.247.354-.416c.09-.181.145-.37.138-.563a.844.844 0 0 0-.2-.518c-.226-.27-.596-.4-.96-.465a5.76 5.76 0 0 0-1.335-.05a10.954 10.954 0 0 1-.98-1.686c.25-.66.437-1.284.52-1.794c.036-.218.055-.426.048-.614a1.238 1.238 0 0 0-.127-.538a.7.7 0 0 0-.477-.365c-.202-.043-.41 0-.601.077c-.377.15-.576.47-.651.823c-.073.34-.04.736.046 1.136c.088.406.238.848.43 1.295a19.707 19.707 0 0 1-1.062 2.227a7.662 7.662 0 0 0-1.482.645c-.37.22-.699.48-.897.787c-.21.326-.275.714-.08 1.103z"/></g></svg>
+                                                    xEncrypted.pdf
+                                                </div>
+                                                <div class="col-span-3 text-right">
+                                                    <!-- <div class="text-xs font-medium inline-flex items-center px-2 py-1 rounded-md bg-green-800 text-green-400">
+                                                        <svg class="w-3 h-3" fill="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M11.1 15h1.8q.225 0 .388-.188t.112-.412l-.475-2.625q.5-.25.788-.725T14 10q0-.825-.588-1.413T12 8q-.825 0-1.413.588T10 10q0 .575.288 1.05t.787.725L10.6 14.4q-.05.225.113.413T11.1 15Zm.9 6.9q-.175 0-.325-.025t-.3-.075Q8 20.675 6 17.637T4 11.1V6.375q0-.625.363-1.125t.937-.725l6-2.25q.35-.125.7-.125t.7.125l6 2.25q.575.225.938.725T20 6.375V11.1q0 3.5-2 6.538T12.625 21.8q-.15.05-.3.075T12 21.9Z"/></svg>
+                                                        Encrypted
+                                                    </div>  -->
+                                                </div>
+                                            </div>
+                                            <!-- <div class="text-sm text-gray-300 py-2 px-3 grid grid-cols-12 items-center">
+                                                <div class="col-span-9 flex items-center">
+                                                    <svg class="w-5 h-5 mr-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g fill="currentColor"><path fill-rule="evenodd" d="M5.625 1.5c-1.036 0-1.875.84-1.875 1.875v17.25c0 1.035.84 1.875 1.875 1.875h12.75c1.035 0 1.875-.84 1.875-1.875V12.75A3.75 3.75 0 0 0 16.5 9h-1.875a1.875 1.875 0 0 1-1.875-1.875V5.25A3.75 3.75 0 0 0 9 1.5H5.625ZM7.5 15a.75.75 0 0 1 .75-.75h7.5a.75.75 0 0 1 0 1.5h-7.5A.75.75 0 0 1 7.5 15Zm.75 2.25a.75.75 0 0 0 0 1.5H12a.75.75 0 0 0 0-1.5H8.25Z" clip-rule="evenodd"/><path d="M12.971 1.816A5.23 5.23 0 0 1 14.25 5.25v1.875c0 .207.168.375.375.375H16.5a5.23 5.23 0 0 1 3.434 1.279a9.768 9.768 0 0 0-6.963-6.963Z"/></g></svg>
+                                                    xE-guide.txt
+                                                </div>
+                                                <div class="col-span-3 text-right">
+                                                    <div class="text-xs font-medium inline-flex items-center px-2 py-1 rounded-md bg-gray-700 text-gray-300">
+                                                        <svg class="w-3 h-3 mr-1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M3 6h18M3 12h10M3 18h15"/></svg>
+                                                        Text Data
+                                                    </div>
+                                                </div>
+                                            </div> -->
+                                        </div>
+                                    </div>
+                                    <!-- Data Files >>>-->
+
+                                    <!-- ZIP Files >>>-->
+                                    
+                                    <div data-download-zip-req class="hidden relative flex p-4 my-4 text-sm rounded-lg bg-gray-800" id="download-zip-req" role="alert">
+                                        <svg class="flex-shrink-0 inline w-4 h-4 mr-3 mt-0.5 text-blue-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                            <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+                                        </svg>
+                                        <span class="sr-only">Info</span>
+                                        <div>
+                                            <span class="font-medium text-blue-400">Ensure that Transformed Data is available:</span>
+                                            <ul class="mt-1.5 ml-4 list-disc list-inside text-gray-400">
+                                                <li>Add the transformed data by encryption or decryption the data</li>
+                                            </ul>
+                                        </div>
+                                        <button type="button" class="absolute right-4 top-4 ml-2 -mx-1.5 -my-1.5 text-gray-400 hover:text-gray-200 rounded-lg p-1.5 hover:bg-gray-600 inline-flex items-center justify-center h-8 w-8" data-dismiss-target="#download-zip-req" aria-label="Close">
+                                            <span class="sr-only">Close</span>
+                                            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                                            </svg>
+                                        </button>
+                                    </div>
+
+                                    <p class="text-center mt-10 mb-2">
+                                        <button id="download-ZIP" class="inline-flex items-center justify-center py-3 px-6 text-base font-medium rounded-lg text-green-200 bg-green-800 hover:bg-green-700 outline-none" data-ripple-dark="true">
+                                            <svg aria-hidden="true" class="w-6 h-6 mr-3"  xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 13.5h-1a1 1 0 0 1-1-1v-8h13v8a1 1 0 0 1-1 1h-1"/><path d="M4.5 11L7 13.5L9.5 11M7 13.5v-6M11.29 1a1 1 0 0 0-.84-.5h-6.9a1 1 0 0 0-.84.5L.5 4.5h13ZM7 .5v4"/></g></svg>
+                                            <span class="w-full">Download Files</span>
+                                            <svg aria-hidden="true" class="w-6 h-6 ml-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                                        </button> 
+                                    </p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Download >>> -->
+                </div>
+            </div>
+
+            <!--
+                - MORE OPTIONS
+            >>>-->
+
+            <!-- Bottom Space -->
+            <div class="h-32 w-full"></div>
+        </div>
+    </div>
+
+    <!-- 
+        >> -------------------------------------------------------------------------------------------------------------------------------- <<
+        >  |    Footer                                                                                                             v2.0.0
+        >> -------------------------------------------------------------------------------------------------------------------------------- <<
+     -->
+     <!-- component -->
+     <footer class="relative w-full pt-3 flex flex-col items-center bg-cyan-900 overflow-hidden">
+        <div class="relative pb-10 pt-24 container z-10 m-auto px-6 md:px-12">
+            <div class="m-auto md:w-10/12 lg:w-8/12 xl:w-6/12">
+                <div class="flex flex-wrap items-center justify-between md:flex-nowrap">
+                    <div class="w-full text-sm space-x-12 flex justify-center text-gray-300 sm:w-7/12 md:justify-start">
+                        <ul class="list-disc list-inside space-y-8">
+                            <li><a href="#" class="hover:text-gray-200 hover:underline transition">Home</a></li>
+                            <li><a href="#" class="hover:text-gray-200 hover:underline transition">About</a></li>
+                            <li><a href="#" class="hover:text-gray-200 hover:underline transition">Guide</a></li>
+                        </ul>
+
+                        <ul role="list" class="space-y-8">
+                            <li>
+                                <a href="#" class="flex items-center space-x-3 hover:text-gray-200 transition">
+                                    <svg class="w-5 h-5" fill="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M3.378 5.082C3 5.62 3 7.22 3 10.417v1.574c0 5.638 4.239 8.375 6.899 9.536c.721.315 1.082.473 2.101.473c1.02 0 1.38-.158 2.101-.473C16.761 20.365 21 17.63 21 11.991v-1.574c0-3.198 0-4.797-.378-5.335c-.377-.537-1.88-1.052-4.887-2.081l-.573-.196C13.595 2.268 12.812 2 12 2c-.811 0-1.595.268-3.162.805L8.265 3c-3.007 1.03-4.51 1.545-4.887 2.082ZM16.45 10.95l-3.4-2.55a1.75 1.75 0 0 0-2.1 0l-3.4 2.55a.75.75 0 1 0 .9 1.2l3.4-2.55a.25.25 0 0 1 .3 0l3.4 2.55a.75.75 0 1 0 .9-1.2Zm-2 2.5l-2-1.5a.75.75 0 0 0-.9 0l-2 1.5a.75.75 0 1 0 .9 1.2L12 13.488l1.55 1.162a.75.75 0 1 0 .9-1.2Z" clip-rule="evenodd"/></svg>
+                                    <!-- <svg class="w-5 h-5" fill="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M11.1 15h1.8q.225 0 .388-.188t.112-.412l-.475-2.625q.5-.25.788-.725T14 10q0-.825-.588-1.413T12 8q-.825 0-1.413.588T10 10q0 .575.288 1.05t.787.725L10.6 14.4q-.05.225.113.413T11.1 15Zm.9 6.9q-.175 0-.325-.025t-.3-.075Q8 20.675 6 17.637T4 11.1V6.375q0-.625.363-1.125t.937-.725l6-2.25q.35-.125.7-.125t.7.125l6 2.25q.575.225.938.725T20 6.375V11.1q0 3.5-2 6.538T12.625 21.8q-.15.05-.3.075T12 21.9Z"/></svg> -->
+                                    <span>Encryption</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="flex items-center space-x-3 hover:text-gray-200 transition">
+                                    <svg class="w-5 h-5" fill="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M18 12a6.41 6.41 0 0 1 2.87.67A11.63 11.63 0 0 0 21 11V5l-9-4l-9 4v6c0 5.55 3.84 10.74 9 12c.35-.09.7-.2 1-.32a6.42 6.42 0 0 1-1.5-4.18A6.5 6.5 0 0 1 18 12m0 2.5V13l-2.25 2.25L18 17.5V16a2.5 2.5 0 0 1 2.24 3.62l1.09 1.09A4 4 0 0 0 18 14.5m0 6.5a2.5 2.5 0 0 1-2.24-3.62l-1.09-1.09A4 4 0 0 0 18 22.5V24l2.25-2.25L18 19.5Z"/></svg>
+                                    <span>Decryption</span>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </div>
+                    <div class="w-10/12 m-auto  mt-16 space-y-6 text-center sm:text-left sm:w-5/12 sm:mt-auto">
+                        <h1 class="font-mx text-6xl text-gray-200">Matrix</h1>
+
+                        <!-- <span class="block text-gray-300">Privacy is a function of libraty</span> -->
+                        
+                        <p class="text-sm mt-3 mb-3 font-mx text-gray-300">Built with <code><</code>3 by Mutaal Khan</p>
+
+                        
+                        <a href="https://www.github.com/mutaal-khan/xE" class="inline-flex w-max items-center border-2 border-gray-900 rounded-lg overflow-hidden" data-ripple-dark="true">
+                            <div class="bg-gray-800 py-2 px-3 inline-flex items-center gap-3">
+                                <svg class="h-4 w-4 text-yellow-300" aria-hidden="true" fill="currentColor" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="currentColor"><path d="M18.483 16.767A8.5 8.5 0 0 1 8.118 7.081a1.27 1.27 0 0 1-.113.097c-.28.213-.63.292-1.33.45l-.635.144c-2.46.557-3.69.835-3.983 1.776c-.292.94.546 1.921 2.223 3.882l.434.507c.476.557.715.836.822 1.18c.107.345.071.717-.001 1.46l-.066.677c-.253 2.617-.38 3.925.386 4.506c.766.582 1.918.052 4.22-1.009l.597-.274c.654-.302.981-.452 1.328-.452c.347 0 .674.15 1.329.452l.595.274c2.303 1.06 3.455 1.59 4.22 1.01c.767-.582.64-1.89.387-4.507l-.048-.487Z"/><path d="m9.153 5.408l-.328.588c-.36.646-.54.969-.82 1.182c.04-.03.077-.062.113-.097a8.5 8.5 0 0 0 10.366 9.686l-.02-.19c-.071-.743-.107-1.115 0-1.46c.107-.344.345-.623.822-1.18l.434-.507c1.677-1.96 2.515-2.941 2.222-3.882c-.292-.941-1.522-1.22-3.982-1.776l-.636-.144c-.699-.158-1.049-.237-1.33-.45c-.28-.213-.46-.536-.82-1.182l-.327-.588C13.58 3.136 12.947 2 12 2c-.947 0-1.58 1.136-2.847 3.408Z" opacity=".5"/></g></svg>
+                                <span class="text-xs">1</span>
+                            </div>
+                            <div class="bg-gray-700 px-3 py-1">
+                                <svg class="h-6 w-6 text-gray-300" aria-hidden="true" fill="currentColor" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M8.854 21.57a9.91 9.91 0 0 0 6.29.001a.493.493 0 0 1-.644-.475c0-.338.013-1.413.013-2.75a2.368 2.368 0 0 0-.675-1.85c2.225-.25 4.562-1.1 4.562-4.938a3.87 3.87 0 0 0-1.025-2.687a3.594 3.594 0 0 0-.1-2.65s-.838-.275-2.75 1.025a9.427 9.427 0 0 0-5 0C7.612 5.958 6.775 6.22 6.775 6.22a3.593 3.593 0 0 0-.1 2.65a3.892 3.892 0 0 0-1.025 2.687c0 3.825 2.325 4.688 4.55 4.938a2.106 2.106 0 0 0-.638 1.337a2.137 2.137 0 0 1-2.91-.82l-.002-.005a2.001 2.001 0 0 0-1.538-1.025c-.837.013-.337.475.013.663c.451.38.803.865 1.025 1.412c.2.563.85 1.638 3.362 1.175c0 .838.013 1.625.013 1.863c0 .259-.185.551-.67.475z" opacity=".5"/><path fill="currentColor" d="M12 2.083c-5.523 0-10 4.477-10 10c0 4.423 2.875 8.169 6.855 9.488c.485.075.67-.216.67-.475c0-.238-.012-1.025-.012-1.863c-2.513.463-3.163-.612-3.363-1.175a3.637 3.637 0 0 0-1.025-1.412c-.35-.188-.85-.65-.013-.663a2 2 0 0 1 1.538 1.025l.003.006a2.137 2.137 0 0 0 2.91.82c.043-.51.27-.984.637-1.338c-2.225-.25-4.55-1.113-4.55-4.938a3.892 3.892 0 0 1 1.025-2.687a3.594 3.594 0 0 1 .1-2.65s.837-.263 2.75 1.025a9.427 9.427 0 0 1 5 0c1.912-1.3 2.75-1.025 2.75-1.025c.37.838.406 1.786.1 2.65a3.87 3.87 0 0 1 1.025 2.687c0 3.838-2.338 4.688-4.562 4.938c.482.49.729 1.164.675 1.85c0 1.337-.013 2.412-.013 2.75a.493.493 0 0 0 .643.476C19.124 20.253 22 16.507 22 12.083c0-5.523-4.477-10-10-10z"/></svg>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- (C) | Privacy & Terms | License  -->
+        <div class="container z-10 max-w-3xl py-3 pb-12 mt-6 px-5 text-gray-300 flex w-full flex-col-reverse items-center justify-between space-y-4 space-y-reverse text-xs font-medium text-gray-300 sm:flex-row sm:space-y-0">
+            <p>© 2023 All Rights Reserved.</p>
+            <p>
+                <a href="#" class="hover:underline">Privacy</a> ·
+                <a href="#" class="hover:underline">Terms</a> ·
+                <a href="#" class="hover:underline">License</a>
+            </p>
+        </div>
+        <div aria-hidden="true" class="absolute -z-10 h-full inset-0 flex justify-center items-end">
+            <div class="h-ax w-full flex justify-center">
+                <svg class="w-full max-w-screen-sm md:w-1/2 absolute -bottom-0 sm:-bottom-80 md:-bottom-60" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev/svgjs" viewBox="0 0 800 800" opacity="0.38"><defs><filter id="bbblurry-filter" x="-100%" y="-100%" width="400%" height="400%" filterUnits="objectBoundingBox" primitiveUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                    <feGaussianBlur stdDeviation="81" x="0%" y="0%" width="100%" height="100%" in="SourceGraphic" edgeMode="none" result="blur"></feGaussianBlur></filter></defs><g filter="url(#bbblurry-filter)"><ellipse rx="150" ry="150" cx="478.70282430568716" cy="366.8019517154714" fill="hsla(166, 100%, 50%, 1.00)"></ellipse><ellipse rx="150" ry="150" cx="418.44677734375" cy="582.241455078125" fill="hsla(284, 100%, 50%, 1.00)"></ellipse><ellipse rx="150" ry="150" cx="279.2580629243681" cy="342.3393330291169" fill="hsla(300, 100%, 50%, 1.00)"></ellipse></g></svg>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 
+        >> -------------------------------------------------------------------------------------------------------------------------------- <<
+        >  |    Toasts                                                                                                               v1.0.0
+        >> -------------------------------------------------------------------------------------------------------------------------------- <<
+    -->
+    <!-- Toasts -->
+    <div class=" fixed bottom-10 w-max left-1.5 xs:left-10 lg:left-28 xl:left-56 z-10">
+        <!-- Encrypt Toast -->
+        <div id="toast-encryption-success" class="hidden flex items-center w-full max-w-xs p-4 mb-4 text-gray-300 bg-gray-700 rounded-lg shadow-3xl" role="alert">
+            <div class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-green-200 bg-green-500 rounded-lg">
+                <svg class="w-5 h-5 text-gray-700" fill="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M3.378 5.082C3 5.62 3 7.22 3 10.417v1.574c0 5.638 4.239 8.375 6.899 9.536c.721.315 1.082.473 2.101.473c1.02 0 1.38-.158 2.101-.473C16.761 20.365 21 17.63 21 11.991v-1.574c0-3.198 0-4.797-.378-5.335c-.377-.537-1.88-1.052-4.887-2.081l-.573-.196C13.595 2.268 12.812 2 12 2c-.811 0-1.595.268-3.162.805L8.265 3c-3.007 1.03-4.51 1.545-4.887 2.082ZM16.45 10.95l-3.4-2.55a1.75 1.75 0 0 0-2.1 0l-3.4 2.55a.75.75 0 1 0 .9 1.2l3.4-2.55a.25.25 0 0 1 .3 0l3.4 2.55a.75.75 0 1 0 .9-1.2Zm-2 2.5l-2-1.5a.75.75 0 0 0-.9 0l-2 1.5a.75.75 0 1 0 .9 1.2L12 13.488l1.55 1.162a.75.75 0 1 0 .9-1.2Z" clip-rule="evenodd"/></svg>
+                <span class="sr-only">Encryption icon</span>
+            </div>
+            <div class="ml-3 text-sm font-normal">Data encrypted successfully</div>
+            <button type="button" class="ml-2 -mx-1.5 -my-1.5 text-gray-400 hover:text-gray-200 rounded-lg p-1.5 hover:bg-gray-600 inline-flex items-center justify-center h-8 w-8" data-dismiss-target="#toast-encryption-success" aria-label="Close">
+                <span class="sr-only">Close</span>
+                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                </svg>
+            </button>
+        </div>
+        <!-- Decrypt Toast -->
+        <div id="toast-decryption-success" class="hidden flex items-center w-full max-w-xs p-4 mb-4 text-gray-300 bg-gray-700 rounded-lg shadow-3xl" role="alert">
+            <div class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-purple-200 bg-purple-500 rounded-lg">
+                <svg class="w-5 h-5 text-gray-700" fill="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M18 12a6.41 6.41 0 0 1 2.87.67A11.63 11.63 0 0 0 21 11V5l-9-4l-9 4v6c0 5.55 3.84 10.74 9 12c.35-.09.7-.2 1-.32a6.42 6.42 0 0 1-1.5-4.18A6.5 6.5 0 0 1 18 12m0 2.5V13l-2.25 2.25L18 17.5V16a2.5 2.5 0 0 1 2.24 3.62l1.09 1.09A4 4 0 0 0 18 14.5m0 6.5a2.5 2.5 0 0 1-2.24-3.62l-1.09-1.09A4 4 0 0 0 18 22.5V24l2.25-2.25L18 19.5Z"/></svg>
+                <span class="sr-only">Decryption icon</span>
+            </div>
+            <div class="ml-3 text-sm font-normal">Data decrypted successfully</div>
+            <button type="button" class="ml-2 -mx-1.5 -my-1.5 text-gray-400 hover:text-gray-200 rounded-lg p-1.5 hover:bg-gray-600 inline-flex items-center justify-center h-8 w-8" data-dismiss-target="#toast-encryption-success" aria-label="Close">
+                <span class="sr-only">Close</span>
+                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                </svg>
+            </button>
+        </div>
+        <!-- Password Added Toast -->
+        <div id="toast-pass-success" class="hidden flex items-center w-full max-w-xs p-4 mb-4 text-gray-300 bg-gray-700 rounded-lg shadow" role="alert">
+            <div class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-yellow-200 bg-yellow-400 rounded-lg">
+                <svg class="w-5 h-5 text-gray-700" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M11.606 2.08a1 1 0 0 1 .788 0l6.394 2.741A2 2 0 0 1 20 6.66v6.86a7 7 0 0 1-3.527 6.077l-3.977 2.272a1 1 0 0 1-.992 0l-3.977-2.272A7 7 0 0 1 4 13.518V6.66a2 2 0 0 1 1.212-1.838l6.394-2.74Zm4.101 8.627a1 1 0 0 0-1.414-1.414L11 12.586l-1.293-1.293a1 1 0 0 0-1.414 1.414l2 2a1 1 0 0 0 1.414 0l4-4Z" clip-rule="evenodd"/></svg>
+                <span class="sr-only">Password icon</span>
+            </div>
+            <div class="ml-3 text-sm font-normal">Password added successfully</div>
+            <button type="button" class="ml-2 -mx-1.5 -my-1.5 text-gray-400 hover:text-gray-200 rounded-lg p-1.5 hover:bg-gray-600 inline-flex items-center justify-center h-8 w-8" data-dismiss-target="#toast-pass-success" aria-label="Close">
+                <span class="sr-only">Close</span>
+                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+    
+    <!-- * JavaScript -->
+    <!-- CryptoJS -->
+    <script type="text/javascript" src="./src/js/lib/crypto-js.min.js"></script>
+    <script type="text/javascript" src="./src/js/lib/aes-min.js"></script>
+    <!-- JS ZIP -->
+    <script src="./src/js/lib/FileSaver.js"></script>
+    <script src="./src/js/lib/jszip.min.js"></script>
+    <!-- PDF KIT JS -->
+    <script src="./src/js/lib/blob-stream.js"></script>
+    <script src="./src/js/lib/pdfkit.standalone.js"></script>
+    <!-- moment.js -->
+    <script src="./src//js/lib/moment.min.js"></script>
+    <!-- Used Ripple.js from Tailwind Material website for button ripple effects -->
+    <script src="src/js/lib/ripple.js"></script>
+    <script src="src/js/lib/easyTab.min.js"></script>
+    <!-- Flowbite.js for toasts ... -->
+    <script src="src/js/lib/flowbite.min.js"></script>
+    <script src="./src/js/lib/validator.min.js"></script>
+    <!-- APP JS -->
+    <script src="./src/js/xE.js"></script>
+    
+</body>
+</html>
+
+<!-- 
+    proudly done by @mutaalkhan
+    github.com/mutaal-khan/xE
+
+    Releases version 1.0.0
+
+    - 04:15 PM - Friday, 21 July, 2023 - Panjshir, Afghanistan
+
+    (C) All rights reserved
+
+    [KHAN] | THE BELIEVERS ARE SUCCESSFUL
+ -->
