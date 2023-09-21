@@ -56,7 +56,7 @@ function setDisable(el) {
 
 function changeEye(eyeParent) {
     /*
-        The Parent Element is a Button so it cotains to SVGs and the 2 on is default hidden
+        The Parent Element is a Button so it cotains two SVGs and the second one is hidden by default
     */
     var eyes = eyeParent.children
     for(let i = 0; i < eyes.length; i++) {eyes[i].classList.toggle('hidden')}
